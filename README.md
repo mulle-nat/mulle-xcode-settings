@@ -26,7 +26,8 @@ This is basically a stripped down version of `mulle_xcode_utility`.
 
 1.0.4
 	Adding a string to another string, creates a proper array of strings.
-        (If the string isn't a duplicate)
+        (If the string isn't a duplicate).
+        New command "insert" like add, but adds in front of previous value(s).
 
 1.0.3
 	Fix moar compile problems that turned up in brew (why not earlier ?)
