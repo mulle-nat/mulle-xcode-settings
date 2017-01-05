@@ -77,7 +77,7 @@ Project:
       OTHER_CFLAGS="-DCURRENT_PROJECT_VERSION=\"${CURRENT_PROJECT_VERSION}\""
 ```
 
-List all non-default project settings for target `mullepbx`:
+List all non-default settings for target `mullepbx`:
 
 ```console
 $ mulle-xcode-settings -t mullepbx list mulle-xcode-settings.xcodeproj
@@ -90,15 +90,15 @@ mullepbx:
       PRODUCT_NAME="$(TARGET_NAME)"
 ```
 
-Change a setting in target `mullepbx` for configuration **Release**:
+Change a setting in target `mullepbx` for configuration `Debug`:
 
 ```console
 $ mulle-xcode-settings -t mullepbx -c Debug set PRODUCT_NAME 'My Foo' mulle-xcode-settings.xcodeproj
 ```
 
 
-Add a setting to the project then remove it again, leaving previous setting
-unperturbed:
+Add a setting to the project combining it with the previous setting. Then remove change again, reverting
+settings to their former state:
 
 ```console
 $ mulle-xcode-settings add HEADER_SEARCH_PATHS '/usr/local/include' ./X.xcodeproj
