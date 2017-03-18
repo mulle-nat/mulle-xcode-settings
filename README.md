@@ -30,21 +30,21 @@ brew install mulle-kybernetik/software/mulle-xcode-settings
 usage: mulle-xcode-settings [options] <commands> <file.xcodeproj>
 
 Options:
-   -c <configuration>          : configuration to set
-   -t <target>                 : target to set
-   -a                          : set on all targets
+	-c <configuration>          : configuration to set
+	-t <target>                 : target to set
+	-a                          : set on all targets
 
 Commands:
-   list                        : list all keys
-   get     <key>               : get value for key
-   set     <key> <value>       : sets key to value
-   add     <key> <value>       : adds value to key
-   insert  <key> <value>       : inserts value in front of key
-   remove  <key> <value>       : removes value from key
-   replace <key> <old> <value> : replace old value for key (if exists)
+	list                        : list all keys
+	get     <key>               : get value for key
+	set     <key> <value>       : sets key to value
+	add     <key> <value>       : adds value to key
+	insert  <key> <value>       : inserts value in front of key
+	remove  <key> <value>       : removes value from key
+	replace <key> <old> <value> : replace old value for key (if exists)
 
 Environment:
-   VERBOSE                     : dump some info to stderr
+	VERBOSE                     : dump some info to stderr
 ```
 
 ### Examples
@@ -111,6 +111,13 @@ $ mulle-xcode-settings remove HEADER_SEARCH_PATHS '/usr/local/include' ./X.xcode
 This is basically a stripped down version of `mulle_xcode_utility`.
 
 ### Releasenotes
+
+
+#### 1.2.0
+
+* Avoid superflous writes to file
+* Improve usage output a bit
+* Use original object version for written pbxproj. This fixes an escaping bug.
 
 
 #### 1.1.1

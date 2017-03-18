@@ -31,14 +31,18 @@
    id             objectStorage_;
    NSDictionary   *infoStorage_;
    NSString       *rootKey_;
+   NSString       *path_;
 
    NSMapTable     *reverseLookup_;
 }
 
-+ (id) unarchiveObjectWithFile:(NSString **) path;
++ (id) unarchiverWithFile:(NSString *) path;
 
 - (NSDictionary *) infoForObject:(id) obj;
 - (int) archiveVersion;
 - (int) objectVersion;
+
+- (NSString *) path;
+- (id) decodeProject;
 
 @end

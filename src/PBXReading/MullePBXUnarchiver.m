@@ -171,7 +171,7 @@ static NSDictionary   *openDictionary( NSString **path, NSPropertyListFormat *fo
    if( archiveVersion_ > 1)
       NSLog( @"later archive version format");
    objectVersion_ = [[dictionary objectForKey:@"objectVersion"] intValue];
-   if( archiveVersion_ > 42)
+   if( archiveVersion_ > 46)
       NSLog( @"later object version format");
 
    proxy = [[PBXProjectProxy alloc] init];  // leaks (but so what)
@@ -218,6 +218,7 @@ static NSDictionary   *openDictionary( NSString **path, NSPropertyListFormat *fo
 
 - (void) dealloc
 {
+   [path_ release];
    [rootKey_ release];
    [objectStorage_ release];
    [infoStorage_ release];
@@ -228,7 +229,44 @@ static NSDictionary   *openDictionary( NSString **path, NSPropertyListFormat *fo
 }
 
 
-+ (id) unarchiveObjectWithFile:(NSString **) path
+- (id) decodeProject
+{
+   PBXProject   *project;
+
+   project = [self decodeRootObject];
+   [[project rootGroup] setProject:project];
+   [project setPath:[self projectDirectory]];
+   
+   return( project);
+}
+
+
+- (NSString *) projectDirectory
+{
+   NSString  *directory;
+   
+   // get main directory (relative possibly)
+   directory = [[path_ stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
+   if( ! [directory length])
+      return( @".");
+   return( directory);
+}
+
+
+- (void) setPath:(NSString *) path
+{
+   [path_ autorelease];
+   path_ = [path copy];
+}
+
+
+- (NSString *) path
+{
+   return( path_);
+}
+
+
++ (id) unarchiverWithFile:(NSString *) path
 {
    NSDictionary           *dict;
    MullePBXUnarchiver     *decoder;
@@ -237,22 +275,14 @@ static NSDictionary   *openDictionary( NSString **path, NSPropertyListFormat *fo
    NSPropertyListFormat   format;
    NSError                *error;
    
-   dict = openDictionary( path, &format, &error);
+   dict = openDictionary( &path, &format, &error);
    if( ! dict)
       return( nil);
-   
-   decoder = [[[self alloc] initWithDictionary:dict] autorelease];
-   project = [decoder decodeRootObject];
-   [[project rootGroup] setProject:project];
-   
-   // get main directory (relative possibly)
-   dir = [[*path stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
-   if( ! [dir length])
-      dir = @".";
 
-   [project setPath:dir];
+   decoder = [[[self alloc] initWithDictionary:dict] autorelease];
+   [decoder setPath:path];
    
-   return( project);
+   return( decoder);
 }
 
 @end

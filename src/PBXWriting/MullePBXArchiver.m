@@ -53,7 +53,7 @@
 - (id) init
 {
    archiveVersion_  = 1;
-   objectVersion_   = 42;
+   objectVersion_   = 46;
    
    return( self);
 }

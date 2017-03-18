@@ -34,8 +34,15 @@
 }
 
 - (void) setArchiveVersion:(int) version;
+
+//
+// the object version is important, writing out a wrong object version
+// can trigger some mysterious bugs in Xcode
+// e.g. v42 vs v46 has different escaping mechanisms for strings...
+//
 - (void) setObjectVersion:(int) version;
 
+// avoid the convenience, set ObjectVersion manually..
 + (NSDictionary *) archivedPropertyListWithRootObject:(id) root;
 - (NSDictionary *) encodedRootObject:(id) root;
 

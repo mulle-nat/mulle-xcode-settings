@@ -17,7 +17,6 @@
 		4167125E1BC3D8BB00B39688 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4167125D1BC3D8BB00B39688 /* main.m */; };
 		416712641BC3D8CF00B39688 /* libmullepbx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 416712321BC3D45500B39688 /* libmullepbx.a */; };
 		4167126C1BC3E6FD00B39688 /* NSString+KeyFromSetterSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4121674F12D897FB00D49F14 /* NSString+KeyFromSetterSelector.m */; };
-		41795C101BCA80CC00CEB1CE /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 41795C0F1BCA80CC00CEB1CE /* README.md */; };
 		41D6EA0E1D61E22D00221D7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D6EA0D1D61E22D00221D7A /* Foundation.framework */; };
 		41F6FBAD1BC3FE8F000C60B2 /* MullePBXArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 412167B312D89EF700D49F14 /* MullePBXArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		41F6FBAE1BC3FE94000C60B2 /* MulleSortedKeyDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 4121697A12D8B42500D49F14 /* MulleSortedKeyDictionary.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -40,18 +39,6 @@
 			remoteInfo = mulleXcode;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		416712591BC3D8BB00B39688 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		08FB779EFE84155DC02AAC07 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; sourceTree = "<absolute>"; };
@@ -252,7 +239,6 @@
 			buildPhases = (
 				416712571BC3D8BB00B39688 /* Sources */,
 				416712581BC3D8BB00B39688 /* Frameworks */,
-				416712591BC3D8BB00B39688 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -326,7 +312,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41795C101BCA80CC00CEB1CE /* README.md in Sources */,
 				4167125E1BC3D8BB00B39688 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +330,7 @@
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_CURRENT_VERSION = 1.0.0;
@@ -360,7 +345,7 @@
 		1DEB927A08733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.2.0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_CURRENT_VERSION = 1.0.0;

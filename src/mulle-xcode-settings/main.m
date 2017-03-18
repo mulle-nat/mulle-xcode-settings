@@ -525,23 +525,26 @@ static void   writeStringToPath( NSString *s, NSString *file)
 
 static int   _main( int argc, const char * argv[])
 {
-   NSArray         *arguments;
-   NSDictionary    *plist;
-   NSString        *backupFile;
-   NSString        *configuration;
-   NSString        *file;
-   NSString        *key;
-   NSString        *old;
-   NSString        *s;
-   NSString        *target;
-   NSString        *value;
-   id              root;
-   unsigned int    i, n;
-   BOOL            allTargets;
+   NSArray              *arguments;
+   NSDictionary         *plist;
+   NSString             *backupFile;
+   NSString             *configuration;
+   NSString             *file;
+   NSString             *key;
+   NSString             *old;
+   NSString             *s;
+   NSString             *target;
+   NSString             *value;
+   id                   root;
+   unsigned int         i, n;
+   BOOL                 allTargets;
+   BOOL                 shouldWrite;
+   MullePBXUnarchiver   *unarchiver;
    
    configuration = nil;
    target        = nil;
    allTargets    = NO;
+   shouldWrite   = NO;
    verbose       = getenv( "VERBOSE") ? YES : NO;
    
    arguments = [[NSProcessInfo processInfo] arguments];
@@ -563,15 +566,29 @@ static int   _main( int argc, const char * argv[])
    if( [[file pathExtension] isEqualToString:@"xcodeproj"])
       file = [file stringByAppendingPathComponent:@"project.pbxproj"];
    
-   root = [MullePBXUnarchiver unarchiveObjectWithFile:&file];
-   if( ! root)
-      fail( @"File %@ is not a PBX (Xcode) file", file);
+   if( ! [[NSFileManager defaultManager] fileExistsAtPath:file])
+      usage();
+
+   unarchiver = [MullePBXUnarchiver unarchiverWithFile:file];
+   if( ! unarchiver)
+      fail( @"File \"%@\" is not a PBX (Xcode) file", file);
+
+   file = [unarchiver path];
+   root = [unarchiver decodeProject];
    
    for( i = 1; i < n; i++)
    {
       s = [arguments objectAtIndex:i];
       
       // options
+      if( [s isEqualToString:@"-a"] ||
+          [s isEqualToString:@"-alltargets"] ||
+          [s isEqualToString:@"--alltargets"])
+      {
+         target = @"##ALL##";
+         continue;
+      }
+
       if(  [s isEqualToString:@"-c"] ||
            [s isEqualToString:@"-configuration"] ||
            [s isEqualToString:@"--configuration"])
@@ -582,6 +599,15 @@ static int   _main( int argc, const char * argv[])
          configuration = [arguments objectAtIndex:i];
          continue;
       }
+
+      if( [s isEqualToString:@"-f"] ||
+          [s isEqualToString:@"-force"] ||
+          [s isEqualToString:@"--force"])
+      {
+         shouldWrite = YES;
+         continue;
+      }
+
 
       if( [s isEqualToString:@"-t"] ||
           [s isEqualToString:@"-target"] ||
@@ -594,14 +620,6 @@ static int   _main( int argc, const char * argv[])
          continue;
       }
       
-      if( [s isEqualToString:@"-a"] ||
-          [s isEqualToString:@"-alltargets"] ||
-          [s isEqualToString:@"--alltargets"])
-      {
-         target = @"##ALL##";
-         continue;
-      }
-
       // commands
       if( [s isEqualToString:@"list"])
       {
@@ -627,24 +645,28 @@ static int   _main( int argc, const char * argv[])
       if( [s isEqualToString:@"set"])
       {
          setting_hack( root, Set, key, value, nil, configuration, target);
+         shouldWrite = YES;
          continue;
       }
       
       if( [s isEqualToString:@"add"])
       {
          setting_hack( root, Add, key, value, nil, configuration, target);
+         shouldWrite = YES;
          continue;
       }
 
       if( [s isEqualToString:@"insert"])
       {
          setting_hack( root, Insert, key, value, nil, configuration, target);
+         shouldWrite = YES;
          continue;
       }
 
       if( [s isEqualToString:@"remove"])
       {
          setting_hack( root, Remove, key, value, nil, configuration, target);
+         shouldWrite = YES;
          continue;
       }
       
@@ -656,6 +678,7 @@ static int   _main( int argc, const char * argv[])
       if( [s isEqualToString:@"replace"])
       {
          setting_hack( root, Replace, key, value, old, configuration, target);
+         shouldWrite = YES;
          continue;
       }
       
@@ -663,10 +686,17 @@ static int   _main( int argc, const char * argv[])
       usage();
    }
    
-   plist = [MullePBXArchiver archivedPropertyListWithRootObject:root];
-   s     = [NSString stringWithFormat:@"// !$*UTF8*$!\n%@", [plist description]];
+   if( shouldWrite)
+   {
+      MullePBXArchiver   *archiver;
+   
+      archiver = [[MullePBXArchiver new] autorelease];
+      [archiver setObjectVersion:[unarchiver objectVersion]];
+      plist    = [archiver encodedRootObject:root];
+      s        = [NSString stringWithFormat:@"// !$*UTF8*$!\n%@", [plist description]];
 
-   writeStringToPath( s, file);
+      writeStringToPath( s, file);
+   }
    
    return( 0);
 }
