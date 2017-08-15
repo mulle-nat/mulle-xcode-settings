@@ -18,12 +18,12 @@
 		416712641BC3D8CF00B39688 /* libmullepbx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 416712321BC3D45500B39688 /* libmullepbx.a */; };
 		4167126C1BC3E6FD00B39688 /* NSString+KeyFromSetterSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4121674F12D897FB00D49F14 /* NSString+KeyFromSetterSelector.m */; };
 		41D6EA0E1D61E22D00221D7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41D6EA0D1D61E22D00221D7A /* Foundation.framework */; };
-		41F6FBAD1BC3FE8F000C60B2 /* MullePBXArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 412167B312D89EF700D49F14 /* MullePBXArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41F6FBAD1BC3FE8F000C60B2 /* MullePBXArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 412167B312D89EF700D49F14 /* MullePBXArchiver.h */; };
 		41F6FBAE1BC3FE94000C60B2 /* MulleSortedKeyDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 4121697A12D8B42500D49F14 /* MulleSortedKeyDictionary.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		41F6FBAF1BC3FE99000C60B2 /* PBXObject+PBXEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 412167BB12D8A57E00D49F14 /* PBXObject+PBXEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		41F6FBB01BC3FE9D000C60B2 /* MullePBXUnarchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 41786CAB12C7B6680010EB6D /* MullePBXUnarchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41F6FBAF1BC3FE99000C60B2 /* PBXObject+PBXEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 412167BB12D8A57E00D49F14 /* PBXObject+PBXEncoding.h */; };
+		41F6FBB01BC3FE9D000C60B2 /* MullePBXUnarchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 41786CAB12C7B6680010EB6D /* MullePBXUnarchiver.h */; };
 		41F6FBB11BC3FEA1000C60B2 /* NSObject+DecodeWithObjectStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 41786C9812C7B2840010EB6D /* NSObject+DecodeWithObjectStorage.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		41F6FBB21BC3FEA5000C60B2 /* PBXObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 41786C9B12C7B2F20010EB6D /* PBXObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41F6FBB21BC3FEA5000C60B2 /* PBXObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 41786C9B12C7B2F20010EB6D /* PBXObject.h */; };
 		41F6FBB31BC3FEAB000C60B2 /* PBXProjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4101507114431CD70019AB2E /* PBXProjectProxy.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		41F6FBBB1BC40869000C60B2 /* NSString+LeadingDotExpansion.h in Headers */ = {isa = PBXBuildFile; fileRef = 41F6FBB81BC4037D000C60B2 /* NSString+LeadingDotExpansion.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		41F6FBBC1BC4086D000C60B2 /* NSString+LeadingDotExpansion.m in Sources */ = {isa = PBXBuildFile; fileRef = 41F6FBB91BC4037D000C60B2 /* NSString+LeadingDotExpansion.m */; };
@@ -202,15 +202,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41F6FBAD1BC3FE8F000C60B2 /* MullePBXArchiver.h in Headers */,
-				41F6FBB01BC3FE9D000C60B2 /* MullePBXUnarchiver.h in Headers */,
-				41F6FBB21BC3FEA5000C60B2 /* PBXObject.h in Headers */,
-				41F6FBAF1BC3FE99000C60B2 /* PBXObject+PBXEncoding.h in Headers */,
 				41F6FBAE1BC3FE94000C60B2 /* MulleSortedKeyDictionary.h in Headers */,
 				41F6FBB11BC3FEA1000C60B2 /* NSObject+DecodeWithObjectStorage.h in Headers */,
 				41F6FBBD1BC40874000C60B2 /* NSString+KeyFromSetterSelector.h in Headers */,
 				41F6FBBB1BC40869000C60B2 /* NSString+LeadingDotExpansion.h in Headers */,
 				41F6FBB31BC3FEAB000C60B2 /* PBXProjectProxy.h in Headers */,
+				41F6FBAD1BC3FE8F000C60B2 /* MullePBXArchiver.h in Headers */,
+				41F6FBB01BC3FE9D000C60B2 /* MullePBXUnarchiver.h in Headers */,
+				41F6FBB21BC3FEA5000C60B2 /* PBXObject.h in Headers */,
+				41F6FBAF1BC3FE99000C60B2 /* PBXObject+PBXEncoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +330,7 @@
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1.2.0;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_CURRENT_VERSION = 1.0.0;
@@ -345,7 +345,7 @@
 		1DEB927A08733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1.2.0;
+				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_CURRENT_VERSION = 1.0.0;
@@ -361,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -368,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
