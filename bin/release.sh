@@ -50,7 +50,7 @@ generate_brew_formula_build()
    local name="$2"
    local version="$3"
 
-   generate_brew_formula_mulle_build "${project}" "${name}" "${version}" "--xcodeproj"
+   generate_brew_formula_xcodebuild "${project}" "${name}" "${version}"
    generate_brew_formula_mulle_test  "${project}" "${name}" "${version}"
 }
 
