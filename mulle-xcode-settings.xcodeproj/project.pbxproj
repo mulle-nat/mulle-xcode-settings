@@ -330,7 +330,7 @@
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1.2.4;
+				CURRENT_PROJECT_VERSION = 1.2.5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_CURRENT_VERSION = 1.0.0;
@@ -345,7 +345,7 @@
 		1DEB927A08733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1.2.4;
+				CURRENT_PROJECT_VERSION = 1.2.5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_CURRENT_VERSION = 1.0.0;
@@ -361,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				INSTALL_PATH = /lib;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -369,6 +370,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				INSTALL_PATH = /lib;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -377,6 +379,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_LINK_OBJC_RUNTIME = NO;
+				INSTALL_PATH = /bin;
 				OTHER_LDFLAGS = (
 					"$(OTHER_LDFLAGS_PLATFORM)",
 					"-all_load",
@@ -389,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_LINK_OBJC_RUNTIME = NO;
+				INSTALL_PATH = /bin;
 				OTHER_LDFLAGS = (
 					"$(OTHER_LDFLAGS_PLATFORM)",
 					"-all_load",
