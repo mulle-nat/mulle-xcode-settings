@@ -1,0 +1,10 @@
+ar
+as
+cc;optional
+clang;optional
+scan-build;optional
+diff
+gcc;optional
+ld
+nm
+ranlib

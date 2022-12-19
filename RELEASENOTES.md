@@ -1,3 +1,8 @@
+# 
+
+* modernized mulle-xcode-settings
+
+
 ### 1.2.6
 
 * raise baseline to 10.6
