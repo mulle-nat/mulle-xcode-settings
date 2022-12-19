@@ -24,5 +24,5 @@ DESC="🗿 Edit Xcode build settings from the command line"
 # edit bin/release.sh. Need to specify mulle-build dependencies
 # so that brew picks up the internal path!
 #
-BUILD_DEPENDENCIES='mulle-kybernetik/software/mulle-foundation-developer
+BUILD_DEPENDENCIES='${MULLE_FOUNDATION_TAP}mulle-foundation-developer
 cmake'
