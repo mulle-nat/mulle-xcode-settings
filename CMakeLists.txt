@@ -24,7 +24,8 @@ include( Environment)
 
 include( Files)
 
-include( IDESupport OPTIONAL)
+# keep commented out for homebrew/formula though
+# include( IDESupport OPTIONAL)
 
 
 ### Executable
